@@ -1,6 +1,14 @@
+body{
+    display: flex;
+    flex-direction: column;
+    background-color: gray;
+}
+
 .logo{
     font-size: 2em;
     display: block;
+    text-align: center;
+    background-color: rgb(111, 118, 119);
 }
 
 .main-class{
@@ -8,11 +16,16 @@
 }
 
 .details-container{
-
+display: flex;
+flex-direction: column;
+align-items: center;
+margin-top: 2.5vh;
 }
 
 .details-image{
-width: 600px;
+width: 80vw;
+height: 60vw;
+border-radius: 25%;
 }
 
 .details-title{
@@ -22,10 +35,23 @@ width: 600px;
 
 .thumbnails-list{
     list-style: none;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    max-height: 25vh;
+    overflow-y: auto;
+    justify-content: space-around;
+    padding-left: 0;
     
 }
 
 .thumbnails-item{
+overflow-y: hidden;
+width: 20vw;
+height: 20vw;
+margin-top: 2.5vh;
+border: solid 1px black;
+border-radius: 25%;
 
 }
 
@@ -35,10 +61,14 @@ color: black;
 }
 
 .thumbnails-image{
-width: 200px;
+width: 20vw;
+height: 15vw;
+display: block;
 }
 
 .thumbnails-title{
 display: block;
-
+text-align: center;
+height: 5vw;
+background-color: rgb(111, 118, 119);
 }
