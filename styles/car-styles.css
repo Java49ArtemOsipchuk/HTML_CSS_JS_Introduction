@@ -79,7 +79,7 @@ body {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    max-height: 25vh;
+    max-height: 26vh;
     overflow-y: auto;
     justify-content: space-around;
     padding-left: 0;
@@ -168,7 +168,7 @@ body {
         .thumbnails-list {
             padding-right: 2vw;
             margin-top: 2.5vh;
-            max-height: 86vh;
+            max-height: 88vh;
         }
 
         .thumbnails-title {
@@ -184,7 +184,7 @@ body {
 
         .details-title {
             font-size: 1.8em;
-            bottom: 6vw;
+            bottom: 8vw;
             left: 13vw;
             
         }
