@@ -50,9 +50,11 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 10vh;
-    position: relative;
+    margin-bottom: 10vh; 
+}
 
+.details-frame{
+    position: relative;
 }
 
 .details-image {
@@ -68,8 +70,8 @@ body {
     font-style: italic;
     background-color: rgba(235, 158, 64, 0.589);
     position: absolute;
-    left: 24vw;
-    bottom: 2vw;
+    left: 20vw;
+    bottom: 4vw;
 
 
 }
@@ -155,8 +157,8 @@ body {
     }
     .details-title {
         font-size: 1.3em;
-        left: 10vw;
-        bottom: 4.5vw;
+        left: 9vw;
+        bottom: 2vw;
     }
 
     .thumbnails-title{
@@ -184,7 +186,7 @@ body {
 
         .details-title {
             font-size: 1.8em;
-            bottom: 8vw;
+            bottom: 2vw;
             left: 13vw;
             
         }
