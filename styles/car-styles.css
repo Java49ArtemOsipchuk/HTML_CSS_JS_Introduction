@@ -72,7 +72,7 @@ body {
     position: absolute;
     left: 20vw;
     bottom: 4vw;
-
+    font-size: 2em;
 
 }
 
@@ -156,7 +156,7 @@ body {
         margin-bottom: 0;
     }
     .details-title {
-        font-size: 1.3em;
+        font-size: 2em;
         left: 9vw;
         bottom: 2vw;
     }
@@ -185,7 +185,7 @@ body {
         
 
         .details-title {
-            font-size: 1.8em;
+            font-size: 3em;
             bottom: 2vw;
             left: 13vw;
             
