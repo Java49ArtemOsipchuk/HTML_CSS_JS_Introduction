@@ -56,6 +56,7 @@ body {
     flex-direction: column;
     align-items: center;
     margin-bottom: 10vh; 
+    transition: 5s cubic-bezier(0.1, 1.5, 0.9, 1);
 }
 
 .hidden .details-container {
@@ -145,6 +146,13 @@ body {
   transform: scale(1.1);
   
 }
+
+.is-point {
+    transform: scale(0.001);
+    transition: 0s;
+}
+ 
+
 @media(min-width: 560px) {
     :root {
         --thumbnails-img-width: 12vw;
