@@ -1,7 +1,4 @@
-
-console.log("Hello world");
-
-let number = 23;
+let number = 555;
 
 function sumDigits(number) {
     if (number < 0){
