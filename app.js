@@ -32,13 +32,11 @@ function fromNumberToString(number, base){
     return result;
 }
 
-let inputStr = "java"
-let base = 36;
 
 function fromStringToNumber(inputStr, base){
     let result = 0;
-    for(let i = 0; i < inputStr.length; i++){
-        let code = strInput.charCode(i);
+    for(let i = 0; i<inputStr.length; i++) {
+        let code = inputStr.charCodeAt(i);
         if(code>=48 && code<=57){
             code -= 48;
         }
@@ -52,4 +50,4 @@ function fromStringToNumber(inputStr, base){
 
 
 console.log(fromNumberToString(900550, 36));
-console.log(fromStringToNumber());
+console.log(fromStringToNumber("java", 36));
