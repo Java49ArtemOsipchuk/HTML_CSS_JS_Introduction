@@ -31,7 +31,7 @@ function fromNumberToString(number, base){
     }
     return result;
 }
-
+console.log(fromNumberToString(900550, 36));
 
 function fromStringToNumber(inputStr, base){
     let result = 0;
@@ -47,7 +47,4 @@ function fromStringToNumber(inputStr, base){
     }
     return result;
 }
-
-
-console.log(fromNumberToString(900550, 36));
 console.log(fromStringToNumber("java", 36));
