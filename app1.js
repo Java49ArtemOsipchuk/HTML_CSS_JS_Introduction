@@ -79,3 +79,5 @@ let numbers = ['123456782', '1234', 'abcd123', '123456783'];
 numbers.forEach(function (e) {
     console.log(`teudat zehut: ${e}, return of the method checkTeudatZehut: ${checkTeudatZehut(e)}`)
 });
+
+
