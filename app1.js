@@ -25,7 +25,7 @@
 // }, 0)
 // console.log("sum of ascii ", sumAscii)
 // console.log(arStr.reduce(function(res, cur) {
-// return res + cur
+// return res + cur 
 // }, ""));
 function getNumberOddIndex(element) {
     let res = element * 2;

@@ -16,7 +16,7 @@
 
 // console.log(sumDigits(number));
 
-/***********HW #12 */
+/***********HW #12  */
 
 function fromNumberToString(number, base){
     number = Math.abs(number);

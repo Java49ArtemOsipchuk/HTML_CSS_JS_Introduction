@@ -15,7 +15,7 @@ function ulSurround(strings1){
 console.log(strings1);
 console.log(strUl);
 
-/**************FUNCTION_2 */
+/**************FUNCTION_2  */
 
 let strings2=["abc","lmn","cd","abc","abc"]
 

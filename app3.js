@@ -32,7 +32,7 @@ console.log("*****************************")
 Returns array containing the strings from the input array without strings
  starting with a given prefix 
 Example: deleteWithPrefix([“abc”, “old_abc”, “lmn”, “123”, “old_lmn”], “old_”)
- returns array [“abc”, “lmn”, “123”] 
+ returns array  [“abc”, “lmn”, “123”] 
  */
  function deleteWithPrefix(strings, prefix) {
     return strings.filter(str => !str.startsWith(prefix))

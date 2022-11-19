@@ -71,4 +71,5 @@ function endGame(isSuccess) {
    trialsElement.innerHTML = '';
    flGameOver = true;
 }
+
 startGame()
