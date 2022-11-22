@@ -6,12 +6,15 @@ body {
 .word-guess {
     display: flex;
     flex-direction: row;
+    margin-top: 3vh;
 }
 .letter-guess {
     font-size: 1.5em;
     margin-left: 2vw;
-    background-color: lightgray;
+    background-color: black;
     width: 3.5vw;
     text-align: center;
-    
+}
+#question {
+    font-size: 2em;
 }

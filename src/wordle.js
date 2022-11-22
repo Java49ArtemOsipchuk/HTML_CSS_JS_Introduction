@@ -1,75 +1,80 @@
-const words = ["pappy", "beach", "apple", "react", "basis",
- "anger", "hello", "dress"];
- let word;
-const N_LETTERS = 5;
-const letterElements = document.querySelectorAll(".letter-guess");
-const trialsElement = document.querySelector(".guess-trials");
-const gameOverElement = document.querySelector(".game-over-message");
+//Configuration
+const words = ["Messi", "Germany", "France",
+    "unknown", "Israel"]
+const questions = ["best player on Mondial 2014",
+    "country champion in mondial 2014", "country champion in mondial 2018",
+    "country champion in mondial 2022",
+    "country that does not participate in Mondial 2022"];
+/******************************************* */
+//DOM elements
+const sectionElement = document.querySelector(".word-guess")
+const inputElement = document.querySelector("input");
 const playAgainElement = document.getElementById("play-again");
-let flGameOver = false;
-const INITIAL_TRIALS = 6;
-let trials = INITIAL_TRIALS;
-function showTrialsMessage(trials) {
-    
-        trialsElement.innerHTML = 
-        `remained ${trials} guess trials`;
-    
-   
-}
+const overGameMessageElement = document.querySelector(".game-over-message");
+const questionElement = document.getElementById("question");
+const guessMessageElement = document.getElementById("guess-message");
+let lettersElements;
+/****************************************************** */
+//variable seen from all functions
+let word;
+let trials = 0;
+let previousIndex = questions.length;
+//functions
+//action functions
 function startGame() {
-    let index = Math.floor(Math.random() * words.length);
+    inputElement.value = '';
+    inputElement.disabled = false;
+    const index = getIndex();
+    previousIndex = index;
+    questionElement.innerHTML = questions[index];
     word = words[index];
-    trials = INITIAL_TRIALS
-    showTrialsMessage(trials);
-    gameOverElement.innerHTML ='';
-    playAgainElement.style.display='none';
-    letterElements.forEach(e => e.innerHTML='');
-    flGameOver = false;
-}
-function onChange(event) {
-    const wordGuess = event.target.value;
-    
-    if (flGameOver) {
-        alert("game is over");
-        return;
-    }
-    trials--;
-    showTrialsMessage(trials);
-     
-    if (wordGuess.length != N_LETTERS) {
-        alert(`A word should contain ${N_LETTERS} letters`)
-    } else {
-        const wordAr = Array.from(wordGuess);
-        wordAr.forEach((l, i) => letterElements[i].innerHTML = l);
-        const colors = wordAr.map((letter, i) => {
-            let index = word.indexOf(letter);
-            let res = 'red';
-            if (index  > -1) {
-                res = letter == word[i] ? 'green' : 'yellow'
-            }
-            return res;
-        })
-        colors.forEach((c, i) =>
-         letterElements[i].style.color=c)
-    }
-    const res = wordGuess == word;
-    if (trials == 0 || res) {
-        endGame(res);
-    }
-    
-}
-function endGame(isSuccess) {
-    if (isSuccess) {
-        gameOverElement.innerHTML =  "Congratulations you are winner";
-        gameOverElement.style.color = "green"
-    } else {
-        gameOverElement.innerHTML =  "Sorry you are loser";
-        gameOverElement.style.color = "red"
-    }
-   
-   playAgainElement.style.display='block';
-   trialsElement.innerHTML = '';
-   flGameOver = true;
-}
+    sectionElement.innerHTML = getLetterDivs();
+    lettersElements = document.querySelectorAll(".letter-guess");
+    word = word.toLowerCase();
+    playAgainElement.hidden = true;
+    overGameMessageElement.innerHTML = '';
+    guessMessageElement.innerHTML = '';
 
-startGame()
+    trials = 0;
+}
+function onWordTyped() {
+    const wordTyped = inputElement.value.toLowerCase();
+    trials++;
+    if (wordTyped.length != word.length) {
+        alert(`word should have ${word.length} letters`)
+    } else {
+        let guessedLetters = 0;
+        lettersElements.forEach((element, i) => {
+            if (wordTyped[i] == element.innerHTML.toLowerCase()) {
+                element.style.background = "white";
+                guessedLetters++;
+            }
+        });
+        guessMessageElement.innerHTML =
+         `you have guessed ${guessedLetters == wordTyped.length ? 'all':guessedLetters} letters`;
+
+        if (wordTyped == word) {
+            endGame();
+        } 
+    }
+}
+function endGame() {
+    overGameMessageElement.innerHTML = `you have used ${trials} guess trials`;
+    playAgainElement.hidden = false;
+    inputElement.disabled = true;
+}
+/************************************************ */
+//additional functions
+function getLetterDivs() {
+    const wordArray = Array.from(word);
+    const res = wordArray.map(letter => `<div class="letter-guess">${letter}</div>`);
+    return res.join('');
+}
+function getIndex() {
+    let res; 
+    do {
+        res = Math.floor(Math.random() * questions.length); 
+    }while(res == previousIndex);
+    return res;
+}
+startGame();
