@@ -1,38 +1,44 @@
-// function getAddressKey() {
-   
-//     return "address";
-// }
-// const person = {id: 123, first_name: 'Vasya',
-//  last_name: 'Ivanov', year: 2000, address: {city: 'Lod',
-//   street: 'Sokolov', app: 100}
-// };
-// const name1 = getAddressKey();
 
-// console.log(person[name1])
-// const personArr = [123, 'Vasya', 'Ivanov', 2000,
-//  ['Lod', 'Sokolov', 100]]
-//  console.log(personArr[3])
-//  console.log(person.address);
-function displayOccurrences(strings) {
+function getOccurrences(str) {
+    let strArr = Array.from(str);
     const occurrences = {};
-    strings.forEach(element => {
+    strArr.forEach(element => {
         if (occurrences[element]) {
             occurrences[element]++;
         } else {
             occurrences[element] = 1;
         }
     });
-    //console.log(Object.entries(occurrences));
-    const occurrencesAr = Object.entries(occurrences)
-    occurrencesAr.sort((e1, e2) => e2[1] - e1[1])
-    console.log(occurrencesAr);
+    
+    return occurrences;
+}
 
- }
-//  const x = {};
-//  const string = "abc";
-//  x[string] = 1;
-//  console.log(x);
-//  x[string]++;
-//  console.log(x);
-const strings = ["a","opr","lmn", "abc", "lmn","abc", "lmn", "lmn", "abc", "a"];
-displayOccurrences(strings);
+function isAnagram(str1, str2) {
+    if(str1.length != str2.length) {
+        return false;
+    }
+
+    let str1Occur = getOccurrences(str1.toLowerCase());
+    let str2Arr = Array.from(str2.toLowerCase());
+    for(let i = 0; i < str2Arr.length; i++) {
+        if(str1Occur[str2Arr[i]] == undefined) {
+        return false;
+    }
+        if(--str1Occur[str2Arr[i]] < 0){
+            return false;
+        }
+}
+
+    return true;
+}
+const word = "Yellow";
+
+console.log(isAnagram(word, 'weloly'));
+console.log(isAnagram(word, 'leloyw'));
+console.log(isAnagram(word, 'wolley'));
+console.log(isAnagram(word, 'weloyl'));
+
+console.log(isAnagram(word, 'weloll'));
+console.log(isAnagram(word, 'leloy')) ;
+console.log(isAnagram(word, 'wollet')); 
+console.log(isAnagram(word, 'weloyo'));
