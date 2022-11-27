@@ -1,44 +1,38 @@
-
-function getOccurrences(str) {
-    let strArr = Array.from(str);
-    const occurrences = {};
-    strArr.forEach(element => {
-        if (occurrences[element]) {
-            occurrences[element]++;
-        } else {
-            occurrences[element] = 1;
-        }
-    });
-    
-    return occurrences;
-}
-
 function isAnagram(str1, str2) {
-    if(str1.length != str2.length) {
-        return false;
+    let res = false;
+    if (str1.length == str2.length) {
+        const str1Occurrences = getSymbolOccurrences(str1);
+        res = checkAnagram(str1Occurrences, str2);
     }
+    return res;
 
-    let str1Occur = getOccurrences(str1.toLowerCase());
-    let str2Arr = Array.from(str2.toLowerCase());
-    for(let i = 0; i < str2Arr.length; i++) {
-        if(str1Occur[str2Arr[i]] == undefined) {
-        return false;
+}
+function symbolProcessing(res, cur) {
+    if (res[cur]) {
+        res[cur]++;
+    } else {
+        res[cur] = 1;
     }
-        if(--str1Occur[str2Arr[i]] < 0){
-            return false;
+    return res;
+}
+function getSymbolOccurrences(string) {
+    const stringArray = Array.from(string);
+    return stringArray.reduce(symbolProcessing
+        , {});
+}
+
+function checkAnagram(occurrences, string) {
+    const stringArray = Array.from(string);
+   
+    return stringArray.every(symbol => {
+        let res = false;
+        if (occurrences[symbol]) {
+            res = true;
+            occurrences[symbol]--
         }
+        return res;
+
+    })
+
 }
-
-    return true;
-}
-const word = "Yellow";
-
-console.log(isAnagram(word, 'weloly'));
-console.log(isAnagram(word, 'leloyw'));
-console.log(isAnagram(word, 'wolley'));
-console.log(isAnagram(word, 'weloyl'));
-
-console.log(isAnagram(word, 'weloll'));
-console.log(isAnagram(word, 'leloy')) ;
-console.log(isAnagram(word, 'wollet')); 
-console.log(isAnagram(word, 'weloyo'));
+isAnagram("yellow","oolley")
